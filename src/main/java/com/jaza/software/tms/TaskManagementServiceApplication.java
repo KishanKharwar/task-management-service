@@ -1,8 +1,7 @@
-package com.jaza.software.tms.main;
+package com.jaza.software.tms;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 //@SpringBootApplication(scanBasePackages = {"com/jaza/software/tms/controller","com/jaza/software/tms/services"})
 @SpringBootApplication
