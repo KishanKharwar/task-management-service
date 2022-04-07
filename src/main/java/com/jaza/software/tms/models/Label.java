@@ -1,6 +1,7 @@
 package com.jaza.software.tms.models;
 
 public class Label {
+
   private String labelName;
 
   public Label(String labelName) {

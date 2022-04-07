@@ -3,7 +3,6 @@ package com.jaza.software.tms.controller;
 import com.jaza.software.tms.models.Priority;
 import com.jaza.software.tms.models.Task;
 import com.jaza.software.tms.services.TaskService;
-import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,19 +23,19 @@ public class TaskController {
   private TaskService service;
 
   @PostMapping
-  public ResponseEntity<Task> createTask(@RequestBody Task task){
+  public ResponseEntity<Task> createTask(@RequestBody Task task) {
     Task createdTask = service.createTask(task);
-    return new ResponseEntity<Task>(createdTask,HttpStatus.CREATED);
+    return new ResponseEntity<Task>(createdTask, HttpStatus.CREATED);
   }
 
   @PutMapping("/{taskId}")
-  public ResponseEntity<Task> updateTask(@PathVariable long taskId,@RequestBody Task task){
-    Task updatedTask = service.updateTask(taskId,task);
-    return new ResponseEntity<Task>(updatedTask,HttpStatus.CREATED);
+  public ResponseEntity<Task> updateTask(@PathVariable long taskId, @RequestBody Task task) {
+    Task updatedTask = service.updateTask(taskId, task);
+    return new ResponseEntity<Task>(updatedTask, HttpStatus.CREATED);
   }
 
   @DeleteMapping("/{taskId}")
-  public ResponseEntity<Long> deleteTask(@PathVariable long taskId){
+  public ResponseEntity<Long> deleteTask(@PathVariable long taskId) {
     boolean isRemoved = service.removeTask(taskId);
 
     if (!isRemoved) {
@@ -47,51 +46,50 @@ public class TaskController {
   }
 
   @GetMapping
-  public ResponseEntity<List<Task>> getAllTasks(){
+  public ResponseEntity<List<Task>> getAllTasks() {
     List<Task> taskList = service.getAllTasks();
 
-    if(taskList.isEmpty()){
+    if (taskList.isEmpty()) {
       return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-    return new ResponseEntity<>(taskList,HttpStatus.OK);
+    return new ResponseEntity<>(taskList, HttpStatus.OK);
   }
 
   @GetMapping("/priority/{priorityType}")
-  public ResponseEntity<List<Task>> getTaskByPriority(@PathVariable Priority priorityType){
+  public ResponseEntity<List<Task>> getTaskByPriority(@PathVariable Priority priorityType) {
 
     List<Task> taskList = service.getAllTasksByPriority(priorityType);
 
-    if(taskList.isEmpty()){
+    if (taskList.isEmpty()) {
       return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-    return new ResponseEntity<>(taskList,HttpStatus.OK);
+    return new ResponseEntity<>(taskList, HttpStatus.OK);
   }
 
   @GetMapping("/label/{labelName}")
-  public ResponseEntity<List<Task>> getTodaysTaskByLabel(@PathVariable String labelName){
+  public ResponseEntity<List<Task>> getTodaysTaskByLabel(@PathVariable String labelName) {
     List<Task> taskList = service.getAllTodaysTasksByLabel(labelName);
 
-    if(taskList.isEmpty()){
+    if (taskList.isEmpty()) {
       return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-    return new ResponseEntity<>(taskList,HttpStatus.OK);
+    return new ResponseEntity<>(taskList, HttpStatus.OK);
   }
 
   @GetMapping("/get-next-two-days-task")
-  public ResponseEntity<List<Task>> getTodaysTaskByLabel(){
+  public ResponseEntity<List<Task>> getTodaysTaskByLabel() {
     List<Task> taskList = service.getAllNextTwoDaysTasks();
 
-    if(taskList.isEmpty()){
+    if (taskList.isEmpty()) {
       return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-    return new ResponseEntity<>(taskList,HttpStatus.OK);
+    return new ResponseEntity<>(taskList, HttpStatus.OK);
   }
 
   @GetMapping("/test")
-  public String test(){
+  public String test() {
     return "testing";
   }
-
 
 
   @Autowired

@@ -2,8 +2,6 @@ package com.jaza.software.tms.entities;
 
 import com.jaza.software.tms.models.Priority;
 import java.sql.Timestamp;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -36,7 +34,7 @@ public class TaskEntity {
 
   }
 
-  public TaskEntity( String taskName, Priority priority, Integer deadLine,
+  public TaskEntity(String taskName, Priority priority, Integer deadLine,
       Timestamp createDate, List<LabelEntity> labels) {
     this.taskName = taskName;
     this.priority = priority;

@@ -1,9 +1,9 @@
 package com.jaza.software.tms.models;
 
-import java.util.Calendar;
 import java.util.List;
 
 public class Task {
+
   private long taskId;
   private String taskName;
   private Priority priority;
@@ -22,7 +22,7 @@ public class Task {
     this.labels = labels;
   }
 
-  public Task(long taskId,String taskName, Priority priority, Integer deadLine,
+  public Task(long taskId, String taskName, Priority priority, Integer deadLine,
       List<Label> labels) {
     this.taskId = taskId;
     this.taskName = taskName;

@@ -3,10 +3,11 @@ package com.jaza.software.tms.models;
 import java.util.Arrays;
 
 public enum Priority {
-  CRITICAL("critical"),HIGH("high"),MEDIUM("medium"),LOW("low");
+  CRITICAL("critical"), HIGH("high"), MEDIUM("medium"), LOW("low");
 
   private String value;
-  private Priority(String value){
+
+  private Priority(String value) {
     this.value = value;
   }
 
