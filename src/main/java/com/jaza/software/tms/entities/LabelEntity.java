@@ -1,36 +1,34 @@
 package com.jaza.software.tms.entities;
 
+import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name = "labels")
 public class LabelEntity {
+
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE)
+  @Column(name = "label_id")
   private long labelId;
   private String labelName;
-  @ManyToOne(fetch = FetchType.LAZY,optional = false)
-  @JoinColumn(name = "task_id",nullable = false)
-  @OnDelete(action = OnDeleteAction.CASCADE)
-  private TaskEntity task;
+
+  @ManyToMany(mappedBy = "labels")
+  private List<TaskEntity> tasks;
 
   public LabelEntity() {
 
   }
 
-  public LabelEntity(long labelId, String labelName, TaskEntity task) {
-    this.labelId = labelId;
+  public LabelEntity(String labelName) {
     this.labelName = labelName;
-    this.task = task;
+
   }
 
   public long getLabelId() {
@@ -49,12 +47,12 @@ public class LabelEntity {
     this.labelName = labelName;
   }
 
-  public TaskEntity getTask() {
-    return task;
+  public List<TaskEntity> getTasks() {
+    return tasks;
   }
 
-  public void setTask(TaskEntity task) {
-    this.task = task;
+  public void setTasks(List<TaskEntity> tasks) {
+    this.tasks = tasks;
   }
 
   @Override
@@ -62,7 +60,7 @@ public class LabelEntity {
     return "LabelEntity{" +
         "labelId=" + labelId +
         ", labelName='" + labelName + '\'' +
-        ", task=" + task +
+        ", tasks=" + tasks +
         '}';
   }
 }

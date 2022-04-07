@@ -3,10 +3,18 @@ package com.jaza.software.tms;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-//@SpringBootApplication(scanBasePackages = {"com/jaza/software/tms/controller","com/jaza/software/tms/services"})
 @SpringBootApplication
-//@EnableJpaRepositories(basePackages = {"com/jaza/software/tms/entities","com/jaza/software/tms/repositories"})
-public class TaskManagementServiceApplication {
+public class TaskManagementServiceApplication  {
+//extends SpringBootServletInitializer implements CommandLineRunner
+//	@Override
+//	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+//		return application.sources(TaskManagementServiceApplication.class);
+//	}
+//
+//	@Override
+//	public void run(String... args) throws Exception {
+//		System.out.println("Application Started !!");
+//	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(TaskManagementServiceApplication.class, args);

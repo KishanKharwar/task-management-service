@@ -1,16 +1,34 @@
 package com.jaza.software.tms.models;
 
-import java.sql.Timestamp;
+import java.util.Calendar;
+import java.util.List;
 
 public class Task {
+  private long taskId;
   private String taskName;
   private Priority priority;
-  private Timestamp deadLine;
+  private Integer deadLine;
+  private List<Label> labels;
 
-  public Task(String taskName, Priority priority, Timestamp deadLine) {
+  public Task() {
+
+  }
+
+  public Task(String taskName, Priority priority, Integer deadLine,
+      List<Label> labels) {
     this.taskName = taskName;
     this.priority = priority;
     this.deadLine = deadLine;
+    this.labels = labels;
+  }
+
+  public Task(long taskId,String taskName, Priority priority, Integer deadLine,
+      List<Label> labels) {
+    this.taskId = taskId;
+    this.taskName = taskName;
+    this.priority = priority;
+    this.deadLine = deadLine;
+    this.labels = labels;
   }
 
   public String getTaskName() {
@@ -29,12 +47,28 @@ public class Task {
     this.priority = priority;
   }
 
-  public Timestamp getDeadLine() {
+  public Integer getDeadLine() {
     return deadLine;
   }
 
-  public void setDeadLine(Timestamp deadLine) {
+  public void setDeadLine(Integer deadLine) {
     this.deadLine = deadLine;
+  }
+
+  public List<Label> getLabels() {
+    return labels;
+  }
+
+  public void setLabels(List<Label> labels) {
+    this.labels = labels;
+  }
+
+  public long getTaskId() {
+    return taskId;
+  }
+
+  public void setTaskId(long taskId) {
+    this.taskId = taskId;
   }
 
   @Override
@@ -43,6 +77,7 @@ public class Task {
         "taskName='" + taskName + '\'' +
         ", priority=" + priority +
         ", deadLine=" + deadLine +
+        ", labels=" + labels +
         '}';
   }
 }
